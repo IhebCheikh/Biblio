@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Livres disponibles{% endblock %}
+
+{% block content %}
+<h2>Liste des livres non disponibles</h2>
+<ul>
+    {% for livre in livres %}
+        <li>
+            <a href="{% url 'details_livre' livre.id %}">{{ livre.titre }}</a> par {{ livre.auteur }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

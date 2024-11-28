@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Livres disponibles{% endblock %}
+
+{% block content %}
+<h2>Liste des livres disponibles</h2>
+<ul>
+    {% for livre in livres %}
+        <li>
+            <strong><a href="{% url 'details_livre' livre.id %}">{{ livre.titre }}</a></strong> par {{ livre.auteur }}
+        <a href="{% url 'emprunter_livre' livre.id %}" class="btn btn-primary">Emprunter</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
