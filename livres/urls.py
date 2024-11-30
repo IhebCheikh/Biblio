@@ -12,6 +12,5 @@ urlpatterns = [
     path('livres/emprunter/<int:id>/', views.emprunter_livre, name='emprunter_livre'),
     path('livres/ajouter/', views.ajouter_livre, name='ajouter_livre'),
 
-    path('image/',views.fct,name='index'),
-
+    path('image/', views.fct, name='index'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

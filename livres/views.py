@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Livre, Album
 from datetime import date
 from .forms import LivreForm
+from .models import Emprunt
+
 
 def ajouter_livre(request):
     if request.method == 'POST':
@@ -36,7 +38,6 @@ def livres_non_disponibles(request):
     livres = Livre.objects.filter(disponible=False)
     return render(request, 'livres/livres_non_disponibles.html', {'livres': livres})
 
-from .models import Emprunt
 
 def emprunter_livre(request, id):
     livre = get_object_or_404(Livre, id=id)
@@ -49,8 +50,6 @@ def emprunter_livre(request, id):
             return redirect('liste_livres')
         return render(request, 'livres/emprunter_livre.html', {'livre': livre})
     return render(request, 'livres/erreur.html', {'message': 'Ce livre n\'est pas disponible.'})
-
 def fct(request):
-    res=Album.objects.all()
-
-    return render(request,"index.html",{'res':res})
+    res = Album.objects.all()
+    return render(request, "index.html", {'res': res})
